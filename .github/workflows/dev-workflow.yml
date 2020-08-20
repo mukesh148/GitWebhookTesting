@@ -15,4 +15,4 @@ jobs:
         with:
           fetch-depth: 2
       - name: diff
-        run: git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }}
+        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
