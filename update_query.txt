@@ -10,3 +10,7 @@ update transfers
     set status = 'INITIATED',
     remarks = NULL and updated_at = UNIX_TIMESTAMP(NOW())
     where source_id in ('FHKYmHGekbic03', 'FIOuIze6sRDcGD', 'FIzUqdEPkaa032', 'FJ4W9tvbBk0zxq', 'FJQlp0zFPpCWt5', 'FJUURD5n6TWaKw');
+
+update attempt
+    set status = 'CREATED'
+
