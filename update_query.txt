@@ -14,3 +14,8 @@ update transfers
 update attempt
     set status = 'CREATED'
 
+update sourceaccount
+    set status = 'CREATED + INITIATED'
+
+update fundaccount
+    set status = 'CREATED + INITIATED'
