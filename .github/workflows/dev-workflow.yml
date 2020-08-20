@@ -15,4 +15,4 @@ jobs:
         with:
           fetch-depth: 2
       - name: diff
-        run: git diff HEAD^ HEAD
+        run: git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }}
