@@ -16,11 +16,11 @@ jobs:
           fetch-depth: 2
       - name: feching git data
         id: diffData
-        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
+        run: echo "::set-output name=test::git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'"
+#        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
       - name: checking env variable
         env:
-          UPDATE_QUERIES_DATA: ${{ steps.diffData.outputs }}
+          UPDATE_QUERIES_DATA: ${{ steps.diffData.outputs.test }}
         run: echo $UPDATE_QUERIES_DATA
-#        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
 
 # curl -X POST -u SPINNAKER_USERNAME:SPINNAKER_PASSWORD https://deploy-api.razorpay.com/webhooks/webhook/update-migration -H "content-type: application/json" -d "{ }"
