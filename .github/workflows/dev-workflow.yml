@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 2
       - name: feching git data
         id: diffData
-        run: echo "::set-output name=test::$(git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+// | sed '/^#/d')"
+        run: echo "::set-output name=test::$(git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//' | sed '/^#/d')"
 #        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
       - name: checking env variable
         env:
