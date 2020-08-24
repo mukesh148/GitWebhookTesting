@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 2
+      - name: checking env variable
         env:
           UPDATE_QUERIES_DATA: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
-      - name: checking env variable
         run: echo $UPDATE_QUERIES_DATA
 #        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
 
