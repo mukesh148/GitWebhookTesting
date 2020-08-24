@@ -15,4 +15,8 @@ jobs:
         with:
           fetch-depth: 2
       - name: diff
-        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
+        env:
+          UPDATE_QUERIES_DATA: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
+#        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
+
+# curl -X POST -u SPINNAKER_USERNAME:SPINNAKER_PASSWORD https://deploy-api.razorpay.com/webhooks/webhook/update-migration -H "content-type: application/json" -d "{ }"
