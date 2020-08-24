@@ -15,8 +15,8 @@ jobs:
         with:
           fetch-depth: 2
       - name: feching git data
-          id: diffData
-          run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
+        id: diffData
+        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
       - name: checking env variable
         env:
           UPDATE_QUERIES_DATA: ${{ steps.diffData.outputs }}
