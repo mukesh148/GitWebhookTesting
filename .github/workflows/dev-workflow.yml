@@ -17,7 +17,7 @@ jobs:
       - name: feching git data
         id: diffData
         run: |
-          data=$(git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//' | sed '/^#/d')
+          data=$(git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//' | sed '/^#/d' | sed '1d')
           data="${data//'%'/'%25'}"
           data="${data//$'\n'/'%0A'}"
           data="${data//$'\r'/'%0D'}"
