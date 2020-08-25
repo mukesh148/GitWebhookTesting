@@ -240,3 +240,13 @@ update sourceaccount
 
 update fundaccount
     set status = 'CREATED + INITIATED'
+
+update attempt
+    set status = 'CREATED'
+
+UPDATE source_accounts
+SET
+    updated_at = UNIX_TIMESTAMP(NOW()),
+    deleted_at = UNIX_TIMESTAMP(NOW())
+WHERE
+    id = 1;
