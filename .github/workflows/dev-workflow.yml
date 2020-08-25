@@ -24,5 +24,5 @@ jobs:
         run: echo $UPDATE_QUERIES_DATA
       - name: curl
         run: |
-          curl -X POST -u api_user:password http://d7ba23f8ea7a.ngrok.io/v1/account -H "content-type: application/json" -d "{ }"
+          curl -X POST -u api_user:password http://3228c09c80bc.ngrok.io/v1/account -H "content-type: application/json" -d "{ }"
 # curl -X POST -u SPINNAKER_USERNAME:SPINNAKER_PASSWORD https://deploy-api.razorpay.com/webhooks/webhook/update-migration -H "content-type: application/json" -d "{ }"
