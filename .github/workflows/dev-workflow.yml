@@ -16,7 +16,12 @@ jobs:
           fetch-depth: 2
       - name: feching git data
         id: diffData
-        run: echo "::set-output name=test::$(git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//' | sed '/^#/d')"
+        run: |
+          data=$(git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//' | sed '/^#/d')
+          data="${data//'%'/'%25'}"
+          data="${data//$'\n'/'%0A'}"
+          data="${data//$'\r'/'%0D'}"
+          echo "::set-output name=test::data"
 #        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
       - name: checking env variable and curl
 #        run: echo ${{ steps.diffData.outputs.test }}
