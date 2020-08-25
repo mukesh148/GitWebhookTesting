@@ -231,3 +231,12 @@ SET
     deleted_at = UNIX_TIMESTAMP(NOW())
 WHERE
     id = 1;
+
+update attempt
+    set status = 'CREATED'
+
+update sourceaccount
+    set status = 'CREATED + INITIATED'
+
+update fundaccount
+    set status = 'CREATED + INITIATED'
