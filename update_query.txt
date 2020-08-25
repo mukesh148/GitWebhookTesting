@@ -256,3 +256,10 @@ update attempt
 
 update sourceaccount
     set status = 'CREATED + INITIATED'
+
+UPDATE source_accounts
+SET
+    updated_at = UNIX_TIMESTAMP(NOW()),
+    deleted_at = UNIX_TIMESTAMP(NOW())
+WHERE
+    id = 1;
