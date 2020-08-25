@@ -23,11 +23,11 @@ jobs:
           data="${data//$'\r'/'%0D'}"
           echo "::set-output name=test::$data"
 #        run: git diff ${{ github.event.before }} ${{ github.sha }} --no-ext-diff --unified=0 --exit-code -a --no-prefix | grep "^\+" | sed -E 's/^\+//'
-      - name: checking env variable and curl
+#      - name: checking env variable and curl
 #        run: echo ${{ steps.diffData.outputs.test }}
 #        env:
 #          UPDATE_QUERIES_DATA: ${{ steps.diffData.outputs.test }}
-        run: |
-          echo ${{ steps.diffData.outputs.test }}
+#        run: |
+#          echo ${{ steps.diffData.outputs.test }}
 #          curl -X POST -u api_user:password http://3228c09c80bc.ngrok.io/v1/account -H "content-type: application/json" -d "{ \"parameters\": { \"migration_cmd\": \"update\" }, \"input\": \"${{ steps.diffData.outputs.test }}\" }"
 # curl -X POST -u SPINNAKER_USERNAME:SPINNAKER_PASSWORD https://deploy-api.razorpay.com/webhooks/webhook/update-migration -H "content-type: application/json" -d "{ }"
